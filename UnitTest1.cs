@@ -3,7 +3,7 @@ namespace DiamondKataTest
     public class UnitTest1
     {
         [Fact]
-        public void Test1()
+        public void OneLine()
         {
             // arrange
             var input = 'A';
@@ -17,10 +17,31 @@ namespace DiamondKataTest
 
         public List<string> MakeDiamond(char input)
         {
+            var dif = (int)input - (int)'A';
+            var before = dif;
+            //int between = 0;
+
             var resultList = new List<string>();
-            resultList.Add(input.ToString());
-            
+
+            for (var i = 0; i <= dif; i++)
+            {
+                var line = GenerateSpaces(dif - i) + (char)((int)'A' + i);
+                resultList.Add(line);
+            }
+
             return resultList;
+        }
+
+        public string GenerateSpaces(int spaces)
+        {
+            var result = "";
+
+            while (result.Length < spaces)
+            {
+                result = result + " ";
+            } 
+
+            return result;
         }
     }
 }
